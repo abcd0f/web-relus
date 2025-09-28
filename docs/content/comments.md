@@ -24,11 +24,11 @@
  * 根据累计消费金额和活跃度综合评定
  * 算法参考: 产品需求文档 v2.3 第5.2节
  */
-function calculateUserLevel(user) {
+const calculateUserLevel = user => {
   const baseScore = user.totalSpending * 0.1;
   const activityBonus = user.activeDays > 30 ? 50 : 0;
   return Math.floor((baseScore + activityBonus) / 100);
-}
+};
 
 // 2. 非直观的技术实现
 /**
@@ -50,9 +50,9 @@ const userCache = new Map();
  * 当前使用旧版API，计划在v2.0版本中移除
  * 相关issue: #1234
  */
-function legacyAuth(token) {
+const legacyAuth = token => {
   // 临时实现...
-}
+};
 ```
 
 ### 什么时候不写注释
@@ -65,10 +65,10 @@ function legacyAuth(token) {
 const userName = user.name;
 
 // 2. 好的命名已经说明一切
-function validateEmail(email) {
+const validateEmail = email => {
   // 不需要注释 "验证邮箱格式"
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+};
 
 // 3. 标准的语言特性
 // 遍历数组 - 多余的注释
@@ -97,9 +97,9 @@ JSDoc 注释通常写在函数、变量、类或模块上方，以 /\*_ ... _/ �
  * @param {number} b - 第二个数字
  * @returns {number} 两个数字的和
  */
-function sum(a, b) {
+const sum = (a, b) => {
   return a + b;
-}
+};
 ```
 
 ### 2. 常用标签
@@ -228,7 +228,7 @@ type EventHandlers<T extends Record<string, any>> = {
 ```javascript
 // ✅ 好的行内注释
 
-function processPayment(amount, currency) {
+const processPayment = (amount, currency) => {
   // 转换为最小货币单位（分）避免浮点数精度问题
   const amountInCents = Math.round(amount * 100);
 
@@ -243,11 +243,11 @@ function processPayment(amount, currency) {
   }
 
   return amountInCents;
-}
+};
 
 // ❌ 不好的行内注释
 
-function processPayment(amount, currency) {
+const processPayment = (amount, currency) => {
   // 乘以100
   const amountInCents = Math.round(amount * 100);
 
@@ -262,7 +262,7 @@ function processPayment(amount, currency) {
   }
 
   return amountInCents; // 返回金额
-}
+};
 ```
 
 ### 多行注释
@@ -283,9 +283,9 @@ function processPayment(amount, currency) {
  * - Algorithms 4th Edition, Robert Sedgewick
  * - "Engineering a Sort Function", Jon Bentley
  */
-function improvedQuickSort(arr, left = 0, right = arr.length - 1) {
+const improvedQuickSort = (arr, left = 0, right = arr.length - 1) => {
   // 实现逻辑...
-}
+};
 ```
 
 ### Vue 组件

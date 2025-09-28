@@ -62,9 +62,9 @@ const {
 const [first, second, ...rest] = items;
 
 // ✅ 推荐：函数参数解构
-function renderUser({ name, avatar, isOnline = false }) {
+const renderUser = ({ name, avatar, isOnline = false }) => {
   return `<div>${name} ${isOnline ? '🟢' : '⭕'}</div>`;
-}
+};
 ```
 
 #### 展开操作符
@@ -245,12 +245,12 @@ interface ApiResponse<T = unknown> {
 }
 
 // ✅ 推荐：函数泛型
-function createRepository<T extends { id: string }>(items: T[]): Repository<T> {
+const createRepository = <T extends { id: string }>(items: T[]): Repository<T> => {
   return {
     findById: (id: string) => items.find(item => item.id === id),
     getAll: () => [...items]
   };
-}
+};
 
 // ✅ 推荐：条件类型
 type NonNullable<T> = T extends null | undefined ? never : T;
@@ -260,9 +260,9 @@ type NonNullable<T> = T extends null | undefined ? never : T;
 
 ```typescript
 // ✅ 推荐：类型守卫
-function isUser(obj: unknown): obj is User {
+const isUser = (obj: unknown): obj is User => {
   return typeof obj === 'object' && obj !== null && 'id' in obj && 'name' in obj;
-}
+};
 
 // ✅ 推荐：使用 as const 获得更精确的类型
 const themes = ['light', 'dark', 'auto'] as const;
@@ -293,12 +293,12 @@ if (typeof userInput === 'string') {
 }
 
 // ✅ 推荐：明确的返回类型
-function calculateAge(birthDate: Date): number {
+const calculateAge = (birthDate: Date): number => {
   return new Date().getFullYear() - birthDate.getFullYear();
 }
 
 // ✅ 推荐：处理可能的 null/undefined
-function getUserDisplayName(user: User | null): string {
+const getUserDisplayName = (user: User | null): string => {
   return user?.name ?? 'Guest User';
 }
 ```
@@ -321,10 +321,10 @@ const userPrefs = savedPrefs ?? getDefaultPreferences();
 
 ```javascript
 // ✅ 推荐：按需加载
-async function loadFeature() {
+const loadFeature = async () => {
   const { heavyFeature } = await import('./heavy-feature.js');
   return heavyFeature();
-}
+};
 
 // ✅ 推荐：条件导入
 if (isDevelopment) {
@@ -360,9 +360,9 @@ class UserManager {
 const message = 'Hello World';
 const users = [];
 
-function getName() {
+const getName = () => {
   return 'John';
-}
+};
 ```
 
 ### 引号使用

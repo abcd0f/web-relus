@@ -110,7 +110,7 @@ watch(
  * 获取用户信息
  * @param id 用户ID
  */
-async function fetchUser(id: string) {
+const fetchUser = async (id: string) => {
   try {
     loading.value = true;
     error.value = null;
@@ -123,15 +123,15 @@ async function fetchUser(id: string) {
   } finally {
     loading.value = false;
   }
-}
+};
 
 /**
  * 刷新用户信息
  */
-async function handleRefresh() {
+const handleRefresh = async () => {
   await fetchUser(props.userId);
   emit('refresh-complete');
-}
+};
 
 // 9. 生命周期钩子
 onMounted(() => {
@@ -322,12 +322,12 @@ const { isShow, showModal, cancelModal, submitModal } = useEditModel();
  * @param options 配置选项
  * @returns 用户管理相关的状态和方法
  */
-export function useUserManagement(options: {
+export const useUserManagement = (options: {
   /** 是否自动加载数据 */
   autoFetch?: boolean
   /** 分页大小 */
   pageSize?: number
-} = {}) {
+} = {}) => {
   const { autoFetch = true, pageSize = 20 } = options
 
   // 状态管理
@@ -341,7 +341,7 @@ export function useUserManagement(options: {
   })
 
   // 获取用户列表
-  async function fetchUsers() {
+  const fetchUsers = async () => {
     try {
       loading.value = true
       error.value = null
@@ -362,7 +362,7 @@ export function useUserManagement(options: {
   }
 
   // 添加用户
-  async function addUser(userData: CreateUserData) {
+  const addUser = async (userData: CreateUserData) => {
     try {
       const newUser = await createUser(userData)
       users.value.unshift(newUser)
@@ -374,7 +374,7 @@ export function useUserManagement(options: {
   }
 
   // 删除用户
-  async function deleteUser(userId: string) {
+  const deleteUser = async (userId: string) => {
     try {
       await removeUser(userId)
       const index = users.value.findIndex(u => u.id === userId)
@@ -450,7 +450,7 @@ const { users, loading, error, activeUsers, fetchUsers, addUser, deleteUser, nex
 const { showConfirm } = useConfirmDialog();
 
 // 处理删除用户
-async function handleDeleteUser(user: User) {
+const handleDeleteUser = async (user: User) => {
   const confirmed = await showConfirm({
     title: '确认删除',
     message: `确定要删除用户 "${user.name}" 吗？此操作不可恢复。`
@@ -464,7 +464,7 @@ async function handleDeleteUser(user: User) {
       // 错误处理已在组合式函数中完成
     }
   }
-}
+};
 </script>
 ```
 
@@ -608,7 +608,7 @@ const pagination = reactive({
 });
 
 // ✅ 复杂状态的工厂函数
-function createInitialState() {
+const createInitialState = () => {
   return {
     filters: {
       status: 'active',
@@ -621,12 +621,12 @@ function createInitialState() {
     },
     selection: new Set<string>()
   };
-}
+};
 
 const state = reactive(createInitialState());
 
 // ✅ 重置状态的方法
-function resetState() {
+const resetState = () => {
   Object.assign(state, createInitialState());
 }
 </script>

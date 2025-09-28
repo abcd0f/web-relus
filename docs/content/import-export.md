@@ -81,9 +81,9 @@ export const BASE_URL = '/api';
 export const fetchData = async (url: string) => {
   // ...
 };
-export function parseResponse(data: unknown) {
+export const parseResponse = (data: unknown) => {
   // ...
-}
+};
 
 // ✅ 导出类型
 export type { User, Role } from './types/user';
@@ -105,13 +105,13 @@ import type { User } from '@/types/user';
 
 const user = ref<User | null>(null);
 
-function setUser(newUser: User) {
+const setUser = (newUser: User) => {
   user.value = newUser;
-}
+};
 
-function clearUser() {
+const clearUser = () => {
   user.value = null;
-}
+};
 
 export { user, setUser, clearUser };
 

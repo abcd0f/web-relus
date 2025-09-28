@@ -156,13 +156,13 @@ function DatabaseConnection(options) {
 }
 
 // ✅ 工厂函数
-function createLogger(level) {
+const createLogger = level => {
   return new Logger(level);
-}
+};
 
-function buildApiClient(baseUrl) {
+const buildApiClient = baseUrl => {
   return new ApiClient(baseUrl);
-}
+};
 ```
 
 ### 常量命名
