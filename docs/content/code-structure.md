@@ -232,7 +232,7 @@ user management/         # 空格分隔
 
 现代项目多数基于`vite`进行开发，因此借助`import.meta.env`可以轻松实现环境配置。
 
-```js
+```bash
 .env                # 全局环境变量
 .env.development    # 开发环境变量
 .env.production     # 生产环境变量

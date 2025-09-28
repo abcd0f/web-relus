@@ -88,7 +88,7 @@ node index.js
 ```markdown
 ## 配置
 在 `.env` 文件中设置以下环境变量：
-```env
+```bash
 PORT=3000
 API_KEY=your_api_key
 ````
@@ -169,7 +169,6 @@ API_KEY=your_api_key
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/username/project/releases)
 ```
 
-
 ## 示例 README
 
 ````markdown
@@ -221,7 +220,7 @@ node index.js
 
 在 `.env` 文件中设置以下环境变量：
 
-```env
+```bash
 PORT=3000
 API_KEY=your_api_key
 ```

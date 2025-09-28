@@ -8,16 +8,12 @@ export const getNav = (): DefaultTheme.NavItem[] => {
       text: '资源站',
       items: [
         { text: 'MDN', link: 'https://developer.mozilla.org/zh-CN/' },
-        {
-          text: 'TS练习',
-          link: 'https://github.com/type-challenges/type-challenges'
-        },
         // {
         //   text: 'LeetCode',
         //   link: 'https://leetcode.cn/problemset/'
         // },
         {
-          text: 'CSS 游戏',
+          text: 'CSS 布局',
           link: '/content/css-battle'
         }
       ]

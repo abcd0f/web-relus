@@ -458,3 +458,7 @@ type Overload<T> = T extends {
   ? ((...args: A1) => R1) | ((...args: A2) => R2) | ((...args: A3) => R3)
   : T;
 ```
+
+## TypeScript 练习
+
+[TypeScript 练习](https://github.com/type-challenges/type-challenges)
