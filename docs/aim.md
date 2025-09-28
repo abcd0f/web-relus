@@ -1,3 +1,12 @@
+<!--
+ * @Author: Sun wanglt-123@qq.com
+ * @Date: 2025-09-26 16:59:05
+ * @LastEditors: Sun wanglt-123@qq.com
+ * @LastEditTime: 2025-09-28 13:41:43
+ * @FilePath: \web-norm\docs\aim.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+
 # 我们的目的
 
 ## 背景
@@ -69,3 +78,7 @@
 ---
 
 _"优秀的规范不是限制创造力，而是为创造力提供坚实的基础。"_
+
+---
+
+代码千万行，安全第一行；前端不规范，同事两行泪。

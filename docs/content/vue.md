@@ -8,7 +8,7 @@ Vue3 的 Composition API 配合 `<script setup>` 语法糖提供了更简洁、�
 
 ### 核心理念
 
-1. **逻辑组合优先**: 相关逻辑代码应该组织在一起，而不是按照选项式 API 的方式分散
+1. **选项式思维顺序优先**: 按照选项式 API 的方式分散，而不是相关逻辑代码应该组织在一起
 2. **类型安全**: 充分利用 TypeScript 的类型系统，确保代码的类型安全
 3. **可复用性**: 抽取可复用的逻辑到组合式函数(Composables)中
 4. **渐进式增强**: 优先使用 Vue3 的新特性，保持向后兼容
@@ -22,9 +22,7 @@ Vue3 的 Composition API 配合 `<script setup>` 语法糖提供了更简洁、�
   <div class="user-profile">
     <h1>{{ user.name }}</h1>
     <p>{{ user.email }}</p>
-    <button @click="handleRefresh" :disabled="loading">
-      {{ loading ? '加载中...' : '刷新' }}
-    </button>
+    <button @click="handleRefresh" :disabled="loading">{{ loading ? '加载中...' : '刷新' }}</button>
   </div>
 </template>
 

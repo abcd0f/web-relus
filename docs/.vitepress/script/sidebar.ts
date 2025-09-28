@@ -1,34 +1,36 @@
 import { type DefaultTheme } from 'vitepress';
 
+const addBadgeHTML = (text: string = '⭐') => {
+  return `<div id="docs-badge">${text}</div>`;
+};
+
 export const getSidebar = (): DefaultTheme.SidebarItem[] => {
   return [
     {
       text: '代码风格与书写规范',
       collapsed: false,
       items: [
-        { text: 'VUE', link: '/content/vue' },
-        { text: '格式化与 Lint', link: '/content/formatting-lint' },
+        { text: 'VUE' + addBadgeHTML(), link: '/content/vue' },
+        { text: '格式化与 Lint' + addBadgeHTML(), link: '/content/formatting-lint' },
         { text: '导入导出规范', link: '/content/import-export' },
         { text: '函数', link: '/content/function' },
         { text: '语言与语法', link: '/content/language-syntax' },
-        { text: '注释', link: '/content/comments' },
+        { text: '注释' + addBadgeHTML(), link: '/content/comments' },
         { text: '命名', link: '/content/naming' },
         { text: '类型', link: '/content/types' },
         { text: '代码组织结构', link: '/content/code-structure' },
         { text: 'package.json', link: '/content/package-json' }
       ]
     },
-    // {
-    //   text: '组件开发规范',
-    //   collapsed: false,
-    //   items: [
-    //     { text: '组件设计原则', link: '/content/component-design' },
-    //     { text: 'Props 定义规范', link: '/content/props-standards' },
-    //     { text: '组件生命周期', link: '/content/component-lifecycle' },
-    //     { text: '组件文档规范', link: '/content/component-docs' },
-    //     { text: '组件复用策略', link: '/content/component-reuse' }
-    //   ]
-    // },
+    {
+      text: '组件开发规范',
+      collapsed: false,
+      items: [
+        { text: '组件设计原则', link: '/content/component-design' },
+        { text: 'Props 定义规范', link: '/content/props-standards' },
+        { text: '组件复用策略', link: '/content/component-reuse' }
+      ]
+    },
     // {
     //   text: '状态管理规范',
     //   collapsed: false,

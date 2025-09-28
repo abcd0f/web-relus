@@ -464,6 +464,72 @@ Block 的子元素，是 Block 的一部分，不能脱离 Block 使用。
 | Element  | `__`   | `.button__icon`    | Block 内部元素             |
 | Modifier | `--`   | `.button--primary` | Block 或 Element 状态/变体 |
 
+### `CSS Module`
+
+#### 文件命名约定
+
+在 Vue 中使用 CSS Modules 时，CSS 文件必须以 .module.css 或 .module.scss 等后缀命名：
+
+这样 Vue / Vite 才会识别这是一个 CSS Module 文件。
+
+#### 基本使用方式
+
+index.module.css
+
+```css
+.button {
+  background-color: #42b983;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+```
+
+index.vue
+
+```vue
+<template>
+  <button :class="styles.button">点击我</button>
+</template>
+
+<script setup lang="ts">
+import styles from './Button.module.css';
+</script>
+```
+
+#### 说明：
+
+- styles.button 会被编译成一个唯一的类名，保证局部作用域。
+- Vue `<script setup>` 下直接 import 即可使用。
+
+#### 与 `<style module>` 的另一种写法
+
+在 Vue 单文件组件里，你也可以直接在 `<style>` 标签上声明 module，不需要单独文件：
+
+```vue
+<template>
+  <button :class="$style.button">点击我</button>
+</template>
+
+<script setup lang="ts">
+// 不需要 import，直接使用 $style
+</script>
+
+<style module>
+.button {
+  background-color: #42b983;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+</style>
+```
+
+#### 说明：
+
+- `$style` 是 Vue 内置的 Module 对象，自动映射类名。
+- 对团队来说，这种方式适合组件内部样式不需要复用的情况。
+
 ## 文件和目录命名
 
 ### 项目结构命名

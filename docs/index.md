@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /content/function
+      link: /content/vue
     - theme: alt
       text: 目的
       link: /aim
