@@ -81,9 +81,9 @@ export const getSidebar = (): DefaultTheme.SidebarItem[] => {
       text: '别人怎样做的',
       collapsed: false,
       items: [
+        { text: '国际标准编码规范', link: 'https://standardjs.com/' },
         { text: '阿里', link: 'https://alibaba.github.io/f2e-spec/zh/' },
-        { text: '腾讯', link: 'https://tgideas.qq.com/doc/frontend/spec/common/' },
-        { text: '京东凹凸实验室', link: 'https://guide.aotu.io/index.html' }
+        { text: '腾讯', link: 'http://alloyteam.github.io/CodeGuide/' }
       ]
     }
   ];
