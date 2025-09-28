@@ -7,9 +7,9 @@ import { getSidebar } from './script/sidebar.ts';
 import { mdPlugin } from './config/plugins.ts';
 
 export default defineConfig({
-  title: 'DOCS模板',
-  titleTemplate: '自定义后缀',
-  description: '一个文档模板',
+  title: 'web规范',
+  titleTemplate: 'web',
+  description: 'web规范',
   // base: './',
   lang: 'zh-CN',
   outDir: '../dist',
