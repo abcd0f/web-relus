@@ -70,6 +70,7 @@ export const getSidebar = (): DefaultTheme.SidebarItem[] => {
       text: '文档与协作规范',
       collapsed: false,
       items: [
+        { text: '阅读文档', link: '/content/read-docs' },
         { text: 'README 编写规范', link: '/content/readme-standards' },
         { text: 'Git/SVN 提交规范', link: '/content/git-commit' }
       ]

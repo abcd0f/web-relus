@@ -98,3 +98,97 @@ MAJOR.MINOR.PATCH
 | 无符号            | 精确匹配                                  | `4.17.21` 只安装这个版本                            |
 | `>`/`>=`/`<`/`<=` | 范围版本                                  | `>=2.0.0 <3.0.0` → 2.x 都可以                       |
 | `*`               | 任意版本                                  | 不推荐，容易出现破坏性更新                          |
+
+## "exports" 字段
+
+这是 Node.js 和现代打包工具（比如 Vite、Webpack、Rollup）支持的包内模块映射机制。它控制了外部使用者在 import 或 require 时，实际访问的文件路径。好处是隐藏内部结构、提供不同环境入口，并明确类型声明。
+
+```json
+"exports": {
+  ".": {
+    "types": "./types/index.d.ts",
+    "default": "./dist/node/index.js"
+  },
+  "./dist/*": "./dist/*",
+  "./package.json": "./package.json",
+  "./client": {
+    "types": "./client.d.ts",
+    "default": "./dist/client/index.js"
+  },
+  "./theme": {
+    "types": "./theme.d.ts",
+    "default": "./dist/client/theme-default/index.js"
+  },
+  "./theme-without-fonts": {
+    "types": "./theme-without-fonts.d.ts",
+    "default": "./dist/client/theme-default/without-fonts.js"
+  }
+}
+
+```
+
+### 解释：
+
+#### 1."."
+
+代表包的默认入口。
+
+- "types" 指向 TypeScript 类型声明文件（供 TS 用户使用）。
+- "default" 指向 Node.js 的默认运行入口（JS 文件）。
+
+#### 2."./dist/\*"
+
+- 允许外部直接访问 dist 目录下的文件，例如 import pkg from 'your-package/dist/foo.js'。
+
+#### 3."./package.json"
+
+- 允许在 ESM 模块中 import pkgJson from 'your-package/package.json'。
+
+#### 4."./client", "./theme", "./theme-without-fonts"
+
+- 为特定子模块提供独立入口。
+- 这样做的好处：用户可以只导入你包里的一部分，而不必加载整个包。
+- 同样分别指明了 types 和 default JS 文件。
+
+## "main" 和 "types"
+
+```json
+"main": "dist/node/index.js",
+"types": "types/index.d.ts",
+```
+
+- "main"：CommonJS 环境下默认入口文件，老的 Node.js 或打包工具会读取这个字段。
+- "types"：TypeScript 的全局类型声明入口，指向 index.d.ts。
+
+> 注：如果 "exports" 存在，现代 Node.js 会优先使用 "exports" 中的入口。
+
+## "bin" 字段
+
+```json
+"bin": {
+  "xxx": "bin/xxx.js"
+}
+```
+
+- 这是 CLI 工具的配置。
+- 当你全局安装这个包后，会在 PATH 中生成 xxx 命令，执行的是 bin/xxx.js 文件。
+
+## "files" 字段
+
+```json
+"files": [
+  "bin",
+  "dist",
+  "types",
+  "template",
+  "client.d.ts",
+  "theme.d.ts",
+  "theme-without-fonts.d.ts",
+  "lib"
+]
+```
+
+- 用于 控制 npm 发布时包含哪些文件。
+- 发布到 npm 的包只会包含这些路径，其他如 src、测试文件等不会被发布。
+
+明白这些更利于排查错误，例如官方文档中没有进行标注，这时可以查看`node_modules`下的包中的`package.json`，从而进一步排查
