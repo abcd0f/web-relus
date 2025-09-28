@@ -18,6 +18,10 @@
 
 官方文档[直达](https://prettier.io/docs/)
 
+#### 配置参考
+
+- [Prettier Options](https://prettier.io/docs/options#tab-width)
+
 ### 基础配置
 
 ```json
