@@ -8,7 +8,7 @@ import { mdPlugin } from './config/plugins.ts';
 
 export default defineConfig({
   title: 'web规范',
-  titleTemplate: 'web',
+  titleTemplate: '智集web',
   description: 'web规范',
   // base: './',
   lang: 'zh-CN',
