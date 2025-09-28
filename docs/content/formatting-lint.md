@@ -23,57 +23,49 @@
 ```json
 // .prettierrc
 {
-  "printWidth": 120, // 每行的最大长度，超过后换行。常见值：80 / 100 / 120
+  "printWidth": 80, // 每行的最大长度，超过后换行。常见值：80 / 100 / 120
   "tabWidth": 2, // 缩进空格数，前端推荐 2
   "useTabs": false, // 用空格缩进而不是 tab
   "semi": true, // 每行结尾加分号
   "singleQuote": true, // 使用单引号代替双引号
-  "proseWrap": "preserve", // markdown 文本自动换行策略。preserve：保持原样
+  "proseWrap": "never", // 控制 Markdown 或其他富文本（比如 .md 文件）中段落的换行行为,永远不自动换行
   "arrowParens": "avoid", // 箭头函数单个参数时省略括号 (x => x)
   "bracketSpacing": true, // 对象字面量大括号内保留空格 { foo: bar }
   "htmlWhitespaceSensitivity": "ignore", // 忽略 HTML 的空格敏感度，减少换行/空格问题
   "ignorePath": ".prettierignore", // 指定忽略文件列表
   "jsxSingleQuote": false, // jsx 里仍使用双引号 <div className="x">
   "requireConfig": false, // 不强制要求必须有配置文件才运行 prettier
-  "trailingComma": "none" // 末尾逗号策略。none：不加；es5：对象/数组加；all：函数参数也加
+  "endOfLine": "auto", // 根据当前操作系统自动选择换行符
+  "trailingComma": "all" // 所有可能的地方都加尾随逗号，包括对象、数组和函数参数
 }
 ```
+
+#### 插件推荐
+
+- [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss#readme)
 
 ### 忽略文件配置
 
 ```bash
 # .prettierignore
-# 依赖
-node_modules
-.pnp
-.pnp.js
-
-# 构建产物
-build
 dist
+dev-dist
+.local
+.output.js
+node_modules
+.nvmrc
 coverage
-*.tsbuildinfo
+CODEOWNERS
+.nitro
+.output
 
-# 配置文件
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
-# 日志
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+**/*.svg
+**/*.sh
 
-# 其他
-*.min.js
-*.min.css
-public/
-.next/
-.nuxt/
-.vuepress/dist
-.serverless/
-.cache/
+public
+.npmrc
+*-lock.yaml
 ```
 
 ### 文件类型特定配置
@@ -101,6 +93,13 @@ public/
       }
     },
     {
+      "files": ["*.json5"],
+      "options": {
+        "quoteProps": "preserve", // JSON5 文件保留属性名
+        "singleQuote": false // JSON5 文件使用双引号
+      }
+    },
+    {
       "files": ["*.css", "*.scss", "*.less"], // 作用于样式文件
       "options": {
         "singleQuote": false // 样式文件中使用双引号（符合 CSS 规范）
@@ -115,6 +114,8 @@ public/
   ]
 }
 ```
+
+> 请在编辑器中安装 `Prettier` 插件,并将其设置为默认格式化程序,不安装,请在代码提交前 执行 `pnpm format` 命令
 
 ## ESLint 配置
 
