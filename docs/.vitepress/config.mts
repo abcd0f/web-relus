@@ -13,6 +13,7 @@ export default defineConfig({
   // base: './',
   lang: 'zh-CN',
   outDir: '../dist',
+  head: [['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }]],
   markdown: {
     // 开启行号
     // lineNumbers: true,
@@ -80,6 +81,7 @@ export default defineConfig({
     },
 
     server: {
+      port: 6985,
       host: '0.0.0.0'
     }
   }

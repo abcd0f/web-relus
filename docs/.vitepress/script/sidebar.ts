@@ -76,6 +76,15 @@ export const getSidebar = (): DefaultTheme.SidebarItem[] => {
         { text: 'README 编写规范', link: '/content/readme-standards' },
         { text: 'Git/SVN 提交规范', link: '/content/git-commit' }
       ]
+    },
+    {
+      text: '别人怎样做的',
+      collapsed: false,
+      items: [
+        { text: '阿里', link: 'https://alibaba.github.io/f2e-spec/zh/' },
+        { text: '腾讯', link: 'https://tgideas.qq.com/doc/frontend/spec/common/' },
+        { text: '京东凹凸实验室', link: 'https://guide.aotu.io/index.html' }
+      ]
     }
   ];
 };
